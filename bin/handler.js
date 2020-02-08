@@ -1,6 +1,7 @@
 // Require Database
 const Database = require('better-sqlite3');
 const util = require('util');
+const stringify = require("json-stringify-safe")
 let db;
 
 // Create Database Under Conditions
@@ -245,7 +246,7 @@ function arbitrate(method, params, tableName) {
   
   // Stringify
   if (params.stringify) {
-    try { params.data = JSON.stringify(params.data); } catch (e) 
+    try { params.data = stringify(params.data); } catch (e) 
     { throw new TypeError(`Please supply a valid input @ ID: ${params.id}\nError: ${e.message}`); } 
   }
   
